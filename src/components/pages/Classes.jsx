@@ -90,6 +90,10 @@ const Classes = () => {
     )
   }
 
+const handleCreateClass = () => {
+    toast.success("Create Class functionality would open here")
+  }
+
   return (
     <div>
       <Header
@@ -99,8 +103,16 @@ const Classes = () => {
           placeholder: "Search classes..."
         }}
         onSearchChange={setSearchTerm}
+        action={
+          <Button
+            variant="primary"
+            icon="Plus"
+            onClick={handleCreateClass}
+          >
+            Create Class
+          </Button>
+        }
       />
-
       <div className="p-6 lg:p-8">
         {filteredClasses.length === 0 ? (
           searchTerm ? (
