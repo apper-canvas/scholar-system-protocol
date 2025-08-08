@@ -1,0 +1,102 @@
+[
+  {
+    "Id": 1,
+    "firstName": "Emily",
+    "lastName": "Johnson",
+    "email": "emily.johnson@school.edu",
+    "grade": "12th",
+    "dateOfBirth": "2006-03-15T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 2,
+    "firstName": "Michael",
+    "lastName": "Chen",
+    "email": "michael.chen@school.edu",
+    "grade": "11th",
+    "dateOfBirth": "2007-07-22T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 3,
+    "firstName": "Sarah",
+    "lastName": "Williams",
+    "email": "sarah.williams@school.edu",
+    "grade": "12th",
+    "dateOfBirth": "2006-01-08T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 4,
+    "firstName": "David",
+    "lastName": "Rodriguez",
+    "email": "david.rodriguez@school.edu",
+    "grade": "10th",
+    "dateOfBirth": "2008-04-12T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 5,
+    "firstName": "Jessica",
+    "lastName": "Thompson",
+    "email": "jessica.thompson@school.edu",
+    "grade": "11th",
+    "dateOfBirth": "2007-09-30T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 6,
+    "firstName": "Alexander",
+    "lastName": "Davis",
+    "email": "alexander.davis@school.edu",
+    "grade": "12th",
+    "dateOfBirth": "2006-06-18T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 7,
+    "firstName": "Olivia",
+    "lastName": "Martinez",
+    "email": "olivia.martinez@school.edu",
+    "grade": "9th",
+    "dateOfBirth": "2009-02-25T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 8,
+    "firstName": "James",
+    "lastName": "Anderson",
+    "email": "james.anderson@school.edu",
+    "grade": "10th",
+    "dateOfBirth": "2008-08-14T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 9,
+    "firstName": "Emma",
+    "lastName": "Taylor",
+    "email": "emma.taylor@school.edu",
+    "grade": "11th",
+    "dateOfBirth": "2007-12-03T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  },
+  {
+    "Id": 10,
+    "firstName": "Ryan",
+    "lastName": "Wilson",
+    "email": "ryan.wilson@school.edu",
+    "grade": "12th",
+    "dateOfBirth": "2006-05-20T00:00:00.000Z",
+    "enrollmentDate": "2023-08-25T00:00:00.000Z",
+    "status": "Active"
+  }
+]

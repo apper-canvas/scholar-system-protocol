@@ -1,0 +1,132 @@
+[
+  {
+    "Id": 1,
+    "studentId": 1,
+    "classId": 1,
+    "assignmentName": "Calculus Quiz 1",
+    "score": 88,
+    "maxScore": 100,
+    "date": "2024-01-15T00:00:00.000Z",
+    "category": "Quiz"
+  },
+  {
+    "Id": 2,
+    "studentId": 1,
+    "classId": 1,
+    "assignmentName": "Linear Algebra Test",
+    "score": 92,
+    "maxScore": 100,
+    "date": "2024-01-20T00:00:00.000Z",
+    "category": "Test"
+  },
+  {
+    "Id": 3,
+    "studentId": 2,
+    "classId": 1,
+    "assignmentName": "Calculus Quiz 1",
+    "score": 75,
+    "maxScore": 100,
+    "date": "2024-01-15T00:00:00.000Z",
+    "category": "Quiz"
+  },
+  {
+    "Id": 4,
+    "studentId": 2,
+    "classId": 2,
+    "assignmentName": "Literary Analysis Essay",
+    "score": 85,
+    "maxScore": 100,
+    "date": "2024-01-18T00:00:00.000Z",
+    "category": "Assignment"
+  },
+  {
+    "Id": 5,
+    "studentId": 3,
+    "classId": 2,
+    "assignmentName": "Literary Analysis Essay",
+    "score": 94,
+    "maxScore": 100,
+    "date": "2024-01-18T00:00:00.000Z",
+    "category": "Assignment"
+  },
+  {
+    "Id": 6,
+    "studentId": 3,
+    "classId": 3,
+    "assignmentName": "Chemical Equations Lab",
+    "score": 87,
+    "maxScore": 100,
+    "date": "2024-01-22T00:00:00.000Z",
+    "category": "Lab"
+  },
+  {
+    "Id": 7,
+    "studentId": 4,
+    "classId": 4,
+    "assignmentName": "World War I Essay",
+    "score": 78,
+    "maxScore": 100,
+    "date": "2024-01-25T00:00:00.000Z",
+    "category": "Assignment"
+  },
+  {
+    "Id": 8,
+    "studentId": 5,
+    "classId": 2,
+    "assignmentName": "Poetry Analysis",
+    "score": 91,
+    "maxScore": 100,
+    "date": "2024-01-28T00:00:00.000Z",
+    "category": "Assignment"
+  },
+  {
+    "Id": 9,
+    "studentId": 6,
+    "classId": 1,
+    "assignmentName": "Statistics Project",
+    "score": 96,
+    "maxScore": 100,
+    "date": "2024-01-30T00:00:00.000Z",
+    "category": "Project"
+  },
+  {
+    "Id": 10,
+    "studentId": 7,
+    "classId": 5,
+    "assignmentName": "Spanish Conversation Test",
+    "score": 82,
+    "maxScore": 100,
+    "date": "2024-02-01T00:00:00.000Z",
+    "category": "Test"
+  },
+  {
+    "Id": 11,
+    "studentId": 8,
+    "classId": 6,
+    "assignmentName": "Motion and Forces Lab",
+    "score": 89,
+    "maxScore": 100,
+    "date": "2024-02-03T00:00:00.000Z",
+    "category": "Lab"
+  },
+  {
+    "Id": 12,
+    "studentId": 9,
+    "classId": 3,
+    "assignmentName": "Periodic Table Quiz",
+    "score": 93,
+    "maxScore": 100,
+    "date": "2024-02-05T00:00:00.000Z",
+    "category": "Quiz"
+  },
+  {
+    "Id": 13,
+    "studentId": 10,
+    "classId": 4,
+    "assignmentName": "Ancient Civilizations Exam",
+    "score": 84,
+    "maxScore": 100,
+    "date": "2024-02-08T00:00:00.000Z",
+    "category": "Exam"
+  }
+]

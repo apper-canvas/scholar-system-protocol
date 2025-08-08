@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 1,
+    "studentId": 1,
+    "classId": 1,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 2,
+    "studentId": 2,
+    "classId": 1,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 3,
+    "studentId": 3,
+    "classId": 2,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Absent",
+    "notes": "Sick"
+  },
+  {
+    "Id": 4,
+    "studentId": 4,
+    "classId": 4,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Late",
+    "notes": "Doctor appointment"
+  },
+  {
+    "Id": 5,
+    "studentId": 5,
+    "classId": 2,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 6,
+    "studentId": 6,
+    "classId": 1,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 7,
+    "studentId": 7,
+    "classId": 5,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 8,
+    "studentId": 8,
+    "classId": 6,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 9,
+    "studentId": 9,
+    "classId": 3,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Late",
+    "notes": "Traffic delay"
+  },
+  {
+    "Id": 10,
+    "studentId": 10,
+    "classId": 4,
+    "date": "2024-02-12T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 11,
+    "studentId": 1,
+    "classId": 1,
+    "date": "2024-02-13T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 12,
+    "studentId": 2,
+    "classId": 1,
+    "date": "2024-02-13T00:00:00.000Z",
+    "status": "Absent",
+    "notes": "Family emergency"
+  },
+  {
+    "Id": 13,
+    "studentId": 3,
+    "classId": 2,
+    "date": "2024-02-13T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 14,
+    "studentId": 4,
+    "classId": 4,
+    "date": "2024-02-13T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  },
+  {
+    "Id": 15,
+    "studentId": 5,
+    "classId": 2,
+    "date": "2024-02-13T00:00:00.000Z",
+    "status": "Present",
+    "notes": ""
+  }
+]

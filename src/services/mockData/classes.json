@@ -1,0 +1,56 @@
+[
+  {
+    "Id": 1,
+    "name": "Advanced Mathematics",
+    "subject": "Mathematics",
+    "period": "1st Period (8:00-9:00 AM)",
+    "room": "Room 201",
+    "semester": "Fall",
+    "year": 2024
+  },
+  {
+    "Id": 2,
+    "name": "AP English Literature",
+    "subject": "English",
+    "period": "2nd Period (9:15-10:15 AM)",
+    "room": "Room 105",
+    "semester": "Fall",
+    "year": 2024
+  },
+  {
+    "Id": 3,
+    "name": "Chemistry Honors",
+    "subject": "Science",
+    "period": "3rd Period (10:30-11:30 AM)",
+    "room": "Lab 301",
+    "semester": "Fall",
+    "year": 2024
+  },
+  {
+    "Id": 4,
+    "name": "World History",
+    "subject": "History",
+    "period": "4th Period (12:30-1:30 PM)",
+    "room": "Room 150",
+    "semester": "Fall",
+    "year": 2024
+  },
+  {
+    "Id": 5,
+    "name": "Spanish III",
+    "subject": "Foreign Language",
+    "period": "5th Period (1:45-2:45 PM)",
+    "room": "Room 220",
+    "semester": "Fall",
+    "year": 2024
+  },
+  {
+    "Id": 6,
+    "name": "Physics",
+    "subject": "Science",
+    "period": "6th Period (3:00-4:00 PM)",
+    "room": "Lab 302",
+    "semester": "Fall",
+    "year": 2024
+  }
+]
