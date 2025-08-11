@@ -72,8 +72,8 @@ const handleSaveStudent = async (studentData) => {
           lastName: studentData.lastName,
           email: studentData.email,
           grade: studentData.grade,
-          dateOfBirth: studentData.dateOfBirth,
-          enrollmentDate: studentData.enrollmentDate,
+          dateOfBirth: studentData.dateOfBirth ? new Date(studentData.dateOfBirth).toISOString().split('T')[0] : null,
+          enrollmentDate: studentData.enrollmentDate ? new Date(studentData.enrollmentDate).toISOString().split('T')[0] : null,
           status: studentData.status
         })
         setStudents(prev => prev.map(s => s.Id === editingStudent.Id ? updatedStudent : s))
@@ -84,8 +84,8 @@ const handleSaveStudent = async (studentData) => {
           lastName: studentData.lastName,
           email: studentData.email,
           grade: studentData.grade,
-          dateOfBirth: studentData.dateOfBirth,
-          enrollmentDate: studentData.enrollmentDate || new Date().toISOString(),
+          dateOfBirth: studentData.dateOfBirth ? new Date(studentData.dateOfBirth).toISOString().split('T')[0] : null,
+          enrollmentDate: studentData.enrollmentDate ? new Date(studentData.enrollmentDate).toISOString().split('T')[0] : new Date().toISOString().split('T')[0],
           status: studentData.status || "Active"
         })
         setStudents(prev => [...prev, newStudent])

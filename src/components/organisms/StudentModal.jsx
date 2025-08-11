@@ -78,7 +78,7 @@ const StudentModal = ({ isOpen, onClose, onSave, student = null }) => {
     return Object.keys(newErrors).length === 0
   }
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault()
     
     if (!validateForm()) return
@@ -88,8 +88,8 @@ const StudentModal = ({ isOpen, onClose, onSave, student = null }) => {
     try {
       const studentData = {
         ...formData,
-        dateOfBirth: new Date(formData.dateOfBirth).toISOString(),
-        enrollmentDate: student ? student.enrollmentDate : new Date().toISOString()
+        dateOfBirth: formData.dateOfBirth ? new Date(formData.dateOfBirth).toISOString().split('T')[0] : null,
+        enrollmentDate: student ? (student.enrollmentDate ? new Date(student.enrollmentDate).toISOString().split('T')[0] : null) : new Date().toISOString().split('T')[0]
       }
       
       await onSave(studentData)
