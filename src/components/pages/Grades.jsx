@@ -63,18 +63,18 @@ const Grades = () => {
     loadData()
   }, [])
 
-  useEffect(() => {
+useEffect(() => {
     let filtered = grades
 
     if (searchTerm) {
       filtered = filtered.filter(grade => {
-        const student = students.find(s => s.Id === grade.studentId)
-        const classInfo = classes.find(c => c.Id === grade.classId)
-        const studentName = student ? `${student.firstName} ${student.lastName}` : ""
-        const className = classInfo ? classInfo.name : ""
+        const student = students.find(s => s.Id === grade.student_id_c?.Id || grade.student_id_c)
+        const classInfo = classes.find(c => c.Id === grade.class_id_c?.Id || grade.class_id_c)
+        const studentName = student ? `${student.first_name_c || ''} ${student.last_name_c || ''}` : ""
+        const className = classInfo ? classInfo.Name : ""
         
         return (
-          grade.assignmentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          (grade.assignment_name_c || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
           studentName.toLowerCase().includes(searchTerm.toLowerCase()) ||
           className.toLowerCase().includes(searchTerm.toLowerCase())
         )
@@ -82,17 +82,17 @@ const Grades = () => {
     }
 
     if (selectedClass) {
-      filtered = filtered.filter(grade => grade.classId === parseInt(selectedClass))
+      filtered = filtered.filter(grade => (grade.class_id_c?.Id || grade.class_id_c) === parseInt(selectedClass))
     }
 
     if (selectedStudent) {
-      filtered = filtered.filter(grade => grade.studentId === parseInt(selectedStudent))
+      filtered = filtered.filter(grade => (grade.student_id_c?.Id || grade.student_id_c) === parseInt(selectedStudent))
     }
 
     setFilteredGrades(filtered)
   }, [searchTerm, selectedClass, selectedStudent, grades, students, classes])
 
-  const handleAddGrade = async (e) => {
+const handleAddGrade = async (e) => {
     e.preventDefault()
     
     if (!newGrade.studentId || !newGrade.classId || !newGrade.assignmentName || !newGrade.score || !newGrade.maxScore) {
@@ -102,12 +102,13 @@ const Grades = () => {
 
     try {
       const gradeData = {
-        ...newGrade,
         studentId: parseInt(newGrade.studentId),
         classId: parseInt(newGrade.classId),
+        assignmentName: newGrade.assignmentName,
         score: parseFloat(newGrade.score),
         maxScore: parseFloat(newGrade.maxScore),
-        date: new Date(newGrade.date).toISOString()
+        date: new Date(newGrade.date).toISOString(),
+        category: newGrade.category
       }
 
       const createdGrade = await gradeService.create(gradeData)
@@ -193,8 +194,8 @@ const Grades = () => {
               onChange={(e) => setSelectedClass(e.target.value)}
             >
               <option value="">All Classes</option>
-              {classes.map(cls => (
-                <option key={cls.Id} value={cls.Id}>{cls.name}</option>
+{classes.map(cls => (
+                <option key={cls.Id} value={cls.Id}>{cls.Name}</option>
               ))}
             </Select>
             
@@ -204,9 +205,9 @@ const Grades = () => {
               onChange={(e) => setSelectedStudent(e.target.value)}
             >
               <option value="">All Students</option>
-              {students.map(student => (
+{students.map(student => (
                 <option key={student.Id} value={student.Id}>
-                  {student.firstName} {student.lastName}
+                  {student.first_name_c || ''} {student.last_name_c || ''}
                 </option>
               ))}
             </Select>
@@ -240,9 +241,9 @@ const Grades = () => {
                 required
               >
                 <option value="">Select Student</option>
-                {students.map(student => (
+{students.map(student => (
                   <option key={student.Id} value={student.Id}>
-                    {student.firstName} {student.lastName}
+                    {student.first_name_c || ''} {student.last_name_c || ''}
                   </option>
                 ))}
               </Select>
@@ -254,8 +255,8 @@ const Grades = () => {
                 required
               >
                 <option value="">Select Class</option>
-                {classes.map(cls => (
-                  <option key={cls.Id} value={cls.Id}>{cls.name}</option>
+{classes.map(cls => (
+                  <option key={cls.Id} value={cls.Id}>{cls.Name}</option>
                 ))}
               </Select>
 
@@ -373,9 +374,9 @@ const Grades = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {filteredGrades.map((grade, index) => {
-                    const student = students.find(s => s.Id === grade.studentId)
-                    const classInfo = classes.find(c => c.Id === grade.classId)
+{filteredGrades.map((grade, index) => {
+                    const student = students.find(s => s.Id === (grade.student_id_c?.Id || grade.student_id_c))
+                    const classInfo = classes.find(c => c.Id === (grade.class_id_c?.Id || grade.class_id_c))
                     
                     return (
                       <motion.tr
@@ -388,40 +389,40 @@ const Grades = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div>
                             <div className="text-sm font-medium text-gray-900">
-                              {grade.assignmentName}
+                              {grade.assignment_name_c || ''}
                             </div>
-                            <div className="text-sm text-gray-500">{grade.category}</div>
+                            <div className="text-sm text-gray-500">{grade.category_c || ''}</div>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">
-                            {student ? `${student.firstName} ${student.lastName}` : "Unknown Student"}
+                            {student ? `${student.first_name_c || ''} ${student.last_name_c || ''}` : "Unknown Student"}
                           </div>
                           {student && (
-                            <div className="text-sm text-gray-500">{student.grade}</div>
+                            <div className="text-sm text-gray-500">{student.grade_c || ''}</div>
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm text-gray-900">
-                            {classInfo ? classInfo.name : "Unknown Class"}
+                            {classInfo ? classInfo.Name : "Unknown Class"}
                           </div>
                           {classInfo && (
-                            <div className="text-sm text-gray-500">{classInfo.subject}</div>
+                            <div className="text-sm text-gray-500">{classInfo.subject_c || ''}</div>
                           )}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="text-sm font-medium text-gray-900">
-                            {grade.score}/{grade.maxScore}
+                            {grade.score_c || 0}/{grade.max_score_c || 0}
                           </div>
                           <div className="text-sm text-gray-500">
-                            {((grade.score / grade.maxScore) * 100).toFixed(1)}%
+                            {grade.max_score_c ? ((grade.score_c / grade.max_score_c) * 100).toFixed(1) : 0}%
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
-                          <GradeBadge score={grade.score} maxScore={grade.maxScore} />
+                          <GradeBadge score={grade.score_c} maxScore={grade.max_score_c} />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                          {formatDate(grade.date)}
+                          {grade.date_c ? formatDate(grade.date_c) : ''}
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <button

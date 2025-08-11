@@ -21,7 +21,7 @@ const Students = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingStudent, setEditingStudent] = useState(null)
 
-  const loadStudents = async () => {
+const loadStudents = async () => {
     setLoading(true)
     setError("")
     
@@ -41,12 +41,12 @@ const Students = () => {
     loadStudents()
   }, [])
 
-  useEffect(() => {
+useEffect(() => {
     if (searchTerm) {
       const filtered = students.filter(student =>
-        `${student.firstName} ${student.lastName}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        student.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        student.grade.toLowerCase().includes(searchTerm.toLowerCase())
+        `${student.first_name_c || ''} ${student.last_name_c || ''}`.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (student.email_c || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
+        (student.grade_c || '').toLowerCase().includes(searchTerm.toLowerCase())
       )
       setFilteredStudents(filtered)
     } else {
@@ -64,14 +64,30 @@ const Students = () => {
     setIsModalOpen(true)
   }
 
-  const handleSaveStudent = async (studentData) => {
+const handleSaveStudent = async (studentData) => {
     try {
       if (editingStudent) {
-        const updatedStudent = await studentService.update(editingStudent.Id, studentData)
+        const updatedStudent = await studentService.update(editingStudent.Id, {
+          firstName: studentData.firstName,
+          lastName: studentData.lastName,
+          email: studentData.email,
+          grade: studentData.grade,
+          dateOfBirth: studentData.dateOfBirth,
+          enrollmentDate: studentData.enrollmentDate,
+          status: studentData.status
+        })
         setStudents(prev => prev.map(s => s.Id === editingStudent.Id ? updatedStudent : s))
         toast.success("Student updated successfully!")
       } else {
-        const newStudent = await studentService.create(studentData)
+        const newStudent = await studentService.create({
+          firstName: studentData.firstName,
+          lastName: studentData.lastName,
+          email: studentData.email,
+          grade: studentData.grade,
+          dateOfBirth: studentData.dateOfBirth,
+          enrollmentDate: studentData.enrollmentDate || new Date().toISOString(),
+          status: studentData.status || "Active"
+        })
         setStudents(prev => [...prev, newStudent])
         toast.success("Student added successfully!")
       }
@@ -101,14 +117,14 @@ const Students = () => {
       return
     }
 
-    const exportData = filteredStudents.map(student => ({
-      "First Name": student.firstName,
-      "Last Name": student.lastName,
-      "Email": student.email,
-      "Grade": student.grade,
-      "Date of Birth": new Date(student.dateOfBirth).toLocaleDateString(),
-      "Enrollment Date": new Date(student.enrollmentDate).toLocaleDateString(),
-      "Status": student.status
+const exportData = filteredStudents.map(student => ({
+      "First Name": student.first_name_c || '',
+      "Last Name": student.last_name_c || '',
+      "Email": student.email_c || '',
+      "Grade": student.grade_c || '',
+      "Date of Birth": student.date_of_birth_c ? new Date(student.date_of_birth_c).toLocaleDateString() : '',
+      "Enrollment Date": student.enrollment_date_c ? new Date(student.enrollment_date_c).toLocaleDateString() : '',
+      "Status": student.status_c || ''
     }))
 
     exportToCSV(exportData, "students.csv")

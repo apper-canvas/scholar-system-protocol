@@ -28,7 +28,7 @@ export const exportToCSV = (data, filename) => {
   const csvContent = [
     headers.join(","),
     ...data.map(row => headers.map(header => {
-      const value = row[header]
+      const value = row[header] || ""
       return typeof value === "string" && value.includes(",") 
         ? `"${value}"` 
         : value

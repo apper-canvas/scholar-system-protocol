@@ -1,8 +1,14 @@
-import React from "react"
+import React, { useContext } from "react"
+import { useSelector } from 'react-redux'
 import SearchBar from "@/components/molecules/SearchBar"
 import ApperIcon from "@/components/ApperIcon"
+import Button from "@/components/atoms/Button"
+import { AuthContext } from "../../App"
 
 const Header = ({ title, search, onSearchChange, actions }) => {
+  const { logout } = useContext(AuthContext)
+  const { user } = useSelector((state) => state.user)
+
   return (
     <div className="bg-white border-b border-gray-100 px-6 py-4 lg:px-8">
       <div className="flex items-center justify-between">
@@ -33,9 +39,20 @@ const Header = ({ title, search, onSearchChange, actions }) => {
               <ApperIcon name="User" size={16} className="text-white" />
             </div>
             <div className="hidden md:block">
-              <p className="text-sm font-medium text-gray-900">Teacher</p>
+              <p className="text-sm font-medium text-gray-900">
+                {user ? `${user.firstName || ''} ${user.lastName || ''}`.trim() || user.emailAddress : 'Teacher'}
+              </p>
               <p className="text-xs text-gray-500">Educator</p>
             </div>
+            <Button
+              variant="ghost"
+              size="sm"
+              icon="LogOut"
+              onClick={logout}
+              className="ml-2"
+            >
+              Logout
+            </Button>
           </div>
         </div>
       </div>

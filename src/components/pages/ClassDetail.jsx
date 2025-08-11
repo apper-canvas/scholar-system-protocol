@@ -42,11 +42,11 @@ const ClassDetail = () => {
         return
       }
       
-      const classGrades = allGrades.filter(g => g.classId === parseInt(id))
-      const classAttendance = allAttendance.filter(a => a.classId === parseInt(id))
+const classGrades = allGrades.filter(g => (g.class_id_c?.Id || g.class_id_c) === parseInt(id))
+      const classAttendance = allAttendance.filter(a => (a.class_id_c?.Id || a.class_id_c) === parseInt(id))
       const enrolledStudentIds = new Set([
-        ...classGrades.map(g => g.studentId),
-        ...classAttendance.map(a => a.studentId)
+        ...classGrades.map(g => g.student_id_c?.Id || g.student_id_c),
+        ...classAttendance.map(a => a.student_id_c?.Id || a.student_id_c)
       ])
       
       const enrolled = allStudents.filter(s => enrolledStudentIds.has(s.Id))
@@ -103,21 +103,21 @@ const ClassDetail = () => {
     )
   }
 
-  const averageGrade = grades.length > 0 ? 
-    grades.reduce((sum, grade) => sum + (grade.score / grade.maxScore * 100), 0) / grades.length : 0
+const averageGrade = grades.length > 0 ? 
+    grades.reduce((sum, grade) => sum + ((grade.score_c || 0) / (grade.max_score_c || 1) * 100), 0) / grades.length : 0
 
   const totalAttendance = attendance.length
-  const presentCount = attendance.filter(a => a.status === "Present").length
+  const presentCount = attendance.filter(a => (a.status_c || a.status) === "Present").length
   const attendanceRate = totalAttendance > 0 ? (presentCount / totalAttendance) * 100 : 0
 
   const getStudentGrades = (studentId) => {
-    return grades.filter(g => g.studentId === studentId)
+    return grades.filter(g => (g.student_id_c?.Id || g.student_id_c) === studentId)
   }
 
   const getStudentAttendanceRate = (studentId) => {
-    const studentAttendance = attendance.filter(a => a.studentId === studentId)
+    const studentAttendance = attendance.filter(a => (a.student_id_c?.Id || a.student_id_c) === studentId)
     if (studentAttendance.length === 0) return 0
-    const present = studentAttendance.filter(a => a.status === "Present").length
+    const present = studentAttendance.filter(a => (a.status_c || a.status) === "Present").length
     return (present / studentAttendance.length) * 100
   }
 
@@ -152,23 +152,23 @@ const ClassDetail = () => {
               </div>
               <div>
                 <h2 className="text-2xl font-bold text-gray-900 font-display">
-                  {classData.name}
+{classData.Name}
                 </h2>
-                <p className="text-lg text-gray-600 mt-1">{classData.subject}</p>
+                <p className="text-lg text-gray-600 mt-1">{classData.subject_c}</p>
                 <div className="flex items-center space-x-4 mt-3 text-sm text-gray-500">
                   <div className="flex items-center">
                     <ApperIcon name="Clock" size={16} className="mr-1" />
-                    {classData.period}
+                    {classData.period_c}
                   </div>
                   <span>•</span>
                   <div className="flex items-center">
                     <ApperIcon name="MapPin" size={16} className="mr-1" />
-                    {classData.room}
+                    {classData.room_c}
                   </div>
                   <span>•</span>
                   <div className="flex items-center">
                     <ApperIcon name="Calendar" size={16} className="mr-1" />
-                    {classData.semester} {classData.year}
+                    {classData.semester_c} {classData.year_c}
                   </div>
                 </div>
               </div>
@@ -309,10 +309,10 @@ const ClassDetail = () => {
                   </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-200">
-                  {enrolledStudents.map((student, index) => {
+{enrolledStudents.map((student, index) => {
                     const studentGrades = getStudentGrades(student.Id)
                     const studentAverage = studentGrades.length > 0 ?
-                      studentGrades.reduce((sum, grade) => sum + (grade.score / grade.maxScore * 100), 0) / studentGrades.length : 0
+                      studentGrades.reduce((sum, grade) => sum + ((grade.score_c || 0) / (grade.max_score_c || 1) * 100), 0) / studentGrades.length : 0
                     const attendanceRate = getStudentAttendanceRate(student.Id)
 
                     return (
@@ -326,13 +326,13 @@ const ClassDetail = () => {
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
                             <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-white font-medium text-sm">
-                              {student.firstName[0]}{student.lastName[0]}
+                              {(student.first_name_c || '')[0]}{(student.last_name_c || '')[0]}
                             </div>
                             <div className="ml-4">
                               <div className="text-sm font-medium text-gray-900">
-                                {student.firstName} {student.lastName}
+                                {student.first_name_c || ''} {student.last_name_c || ''}
                               </div>
-                              <div className="text-sm text-gray-500">{student.grade}</div>
+                              <div className="text-sm text-gray-500">{student.grade_c || ''}</div>
                             </div>
                           </div>
                         </td>

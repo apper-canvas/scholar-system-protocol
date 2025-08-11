@@ -29,7 +29,7 @@ export const calculateGPA = (grades) => {
   }
   
   const total = grades.reduce((sum, grade) => {
-    const percentage = (grade.score / grade.maxScore) * 100
+    const percentage = ((grade.score_c || grade.score || 0) / (grade.max_score_c || grade.maxScore || 1)) * 100
     const letter = calculateLetterGrade(percentage)
     return sum + gradePoints[letter]
   }, 0)
